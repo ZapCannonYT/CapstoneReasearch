@@ -38,7 +38,7 @@ Camera-only tracking is sufficient for **coarse form-quality feedback and longit
 
 ## 5. Verified Peer-Reviewed References (2020–2026)
 
-- **Exercise quantification from single camera view markerless 3D pose estimation.** 2024. PMID: [PMC10951609](https://pmc.ncbi.nlm.nih.gov/articles/PMC10951609/). **Source location:** Abstract (top of page) states ≤15° error bound; Results section (middle of page) gives the full per-joint RMSE table (≤10° for most metrics). Verified live 2026-09-27.
+- **Exercise quantification from single camera view markerless 3D pose estimation.** *Heliyon*, Vol. 10, Issue 6, e27596, 2024. PMID: [38510055](https://pubmed.ncbi.nlm.nih.gov/38510055/); DOI: 10.1016/j.heliyon.2024.e27596 (PMC: [PMC10951609](https://pmc.ncbi.nlm.nih.gov/articles/PMC10951609/)). **Source location:** Abstract (top of page) states ≤15° error bound; Results section (middle of page) gives the full per-joint RMSE table (≤10° for most metrics). Verified live 2026-09-27.
 - **Assessment of monocular human pose estimation models for clinical movement analysis.** *Scientific Reports*, 2025. DOI/URL: [nature.com/articles/s41598-025-22626-7](https://www.nature.com/articles/s41598-025-22626-7).
 - **Markerless joint angle estimation using MediaPipe with a rapid setup for joint moment calculation.** *Multimedia Tools and Applications*, 2026. Springer Nature Link: [link.springer.com/article/10.1007/s11042-026-21256-z](https://link.springer.com/article/10.1007/s11042-026-21256-z).
 - **Video-Based Markerless Motion Capture for Clinical and Rehabilitation Biomechanics: A PRISMA-ScR Scoping Review.** 2026 preprint. [arxiv.org/pdf/2609.18667](https://arxiv.org/pdf/2609.18667).
