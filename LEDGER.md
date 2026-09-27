@@ -84,8 +84,7 @@ This matrix is reorganized by **physical device**, not by marker, to make the se
 +-----------------------------------------------------------------------------------------------+
 | [OPTIONAL / TERTIARY — add only when the use case specifically needs it (see §3.1)]             |
 +-----------------------------------------------------------------------------------------------+
-| Plantar Pressure Insole (spatial map) -->  Sub-foot pressure hot-spots, static/isometric loading|
-|                                            (NOT replicable by camera or IMU — see §3.1)         |
+| Plantar Pressure Insole (spatial map) -->  Sub-foot hot-spots, static holds only (see §3.1)    |
 | Paraspinal Motion Tape Strain         -->  Lumbar L4/L5 Disc Shear & Strain                     |
 | CGM (recurring cost, off-label use)    -->  Metabolic/energy-availability trend                |
 +-----------------------------------------------------------------------------------------------+
@@ -94,20 +93,9 @@ This matrix is reorganized by **physical device**, not by marker, to make the se
 
 ---
 
-### 3.1 How Useful Are Plantar Pressure Insoles, Really? (Minimal-Sensor Verdict)
+### 3.1 Plantar Pressure Insoles: Optional, Not Core
 
-**Short answer: less essential than the original design assumed, but not zero-value — demote from "core" to "optional."**
-
-The case *for* dropping the dedicated insole:
-- IMU-only deep-learning GRF estimation already reaches **6.2% ± 1.8% BW error vs. Bertec force plates** (see [`02_cost_and_ergonomic_benchmarks/03_gold_standard_validation_benchmarks.md`](../02_cost_and_ergonomic_benchmarks/03_gold_standard_validation_benchmarks.md)), compared to the insole's own **4.8% ± 1.2% BW** (ledger row 09) — a real but modest accuracy gap, for one entire extra wearable.
-- **Motion2Press** (row 22) shows the IMU stream can be cross-modally decoded into plantar pressure distribution, GRF, *and* CoP directly — i.e., the one thing insoles were thought to uniquely provide (CoP) is starting to be inferable from IMU data already collected for kinematics.
-- **GRF-MV** (row 23) shows even the camera alone, with zero wearables, can produce an approximate GRF signal — the most aggressive offload option, still early-stage.
-
-The case *against* dropping it entirely:
-- **Spatial pressure mapping** (which part of the foot is overloaded — forefoot vs. rearfoot, medial vs. lateral) has no substitute in either IMU or camera data; this specific sub-foot detail is the insole's one truly unreplicated contribution.
-- **Static/isometric loading** (a held bottom-of-squat position, a single-leg balance hold, a plank) gives an IMU almost no signal to work with, since IMU-based estimation leans on acceleration dynamics — an insole measures force directly regardless of motion.
-
-**Recommendation:** keep plantar pressure insoles **out of the default/core stack** (camera + one combined IMU+sEMG node + smartwatch). Add an insole only for a specific downstream need — e.g. a clinical-style rehab assessment requiring true CoP/spatial mapping, or a static-hold exercise protocol — not as a standing part of every session.
+Insoles are **not a front-line focus** of this stack. IMU-only GRF estimation (6.2% ± 1.8% BW error, row 9's insole is 4.8% ± 1.2% BW) and Motion2Press's IMU-to-pressure/GRF/CoP inference (row 22) already cover most of what an insole used to be needed for, without adding a wearable. The two cases an insole still uniquely covers — true sub-foot spatial pressure mapping, and static/isometric holds where IMU has little motion signal — are narrow enough to treat as a session-specific add-on, not a standing part of the stack. See row 9 for the insole's own accuracy figure if one is needed for a specific test.
 
 ---
 

@@ -22,7 +22,7 @@ Measures heart rate and RR-interval via PPG or chest strap. Gives HRV (RMSSD) an
 
 | Sensor | What it uniquely restores | Why it stays optional |
 | :--- | :--- | :--- |
-| Plantar pressure insole | True spatial pressure map (forefoot/rearfoot, medial/lateral) and accurate GRF during static/isometric holds — IMU estimation needs motion dynamics it doesn't have during a held position (Row 9: 4.8% ± 1.2% BW vs. Kistler plates) | For dynamic movement, IMU-only GRF is already close (6.2% ± 1.8% BW) — a modest gap for an entire extra wearable. Full reasoning in `LEDGER.md` §3.1 |
+| Plantar pressure insole | Sub-foot spatial pressure map and static/isometric-hold GRF, where IMU has little motion signal to work from (Row 9: 4.8% ± 1.2% BW) | Not a front-line focus — IMU-only GRF is already close for dynamic movement (6.2% ± 1.8% BW); see `LEDGER.md` §3.1 |
 | Paraspinal motion tape | Lumbar L4/L5 shear/strain and spinal flexion curvature during heavy hinge movements (Row 6) | Niche use case, no verified India vendor pricing yet |
 | Continuous Glucose Monitor (CGM) | Interstitial glucose trend, nocturnal-hypoglycemia flag for under-recovery/overtraining (Row 19) | Purely metabolic, outside the biomechanical mesh, and a recurring cost (~₹4,200-5,249 per 14-day sensor) rather than one-time |
 
