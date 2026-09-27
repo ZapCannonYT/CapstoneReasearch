@@ -86,7 +86,9 @@ Following SENIAM (Surface ElectroMyoGraphy for the Non-Invasive Assessment of Mu
 | **Exercise Longevity** | Gel dries after 45–90 min; sweat disrupts adhesive contact. | Stable over several hours; sweat actually lowers contact impedance. | Breathable, washable, durable for repeated heavy training sessions. |
 | **Motion Artifact** | Moderate (lead wires tugging on snap connectors). | Low (rigidly encapsulated wireless node directly over skin). | Extremely low when compression fit prevents skin sliding. |
 | **Mass & Form Factor** | Lightweight electrodes, but bulky tethered junction boxes. | $10 - 25\,\text{g}$ per wireless node. | Integrated conductive silver-plated yarn into garment. |
-| **System Cost (India, ₹)** | ≈₹13,50,000 – ₹36,00,000 (Delsys Trigno / Noraxon; indicative conversion) | ≈₹13,500 – ₹45,000 per channel (Movesense / OpenBCI; indicative conversion) — for the accessible tier, prefer the verified MyoWare 2.0 unit at **₹4,599** (see [`../02_cost_and_ergonomic_benchmarks/01_hardware_cost_comparison.md`](../02_cost_and_ergonomic_benchmarks/01_hardware_cost_comparison.md)) | ≈₹27,000 – ₹1,08,000 complete garment suit (Athos / Myontec; indicative conversion) |
+| **System Cost (India, ₹)** | ≈₹13,50,000 – ₹36,00,000 (Delsys Trigno / Noraxon; indicative conversion) | ≈₹13,500 – ₹45,000 per channel (Movesense / OpenBCI; indicative conversion) — for the accessible tier, prefer either the standalone MyoWare 2.0 unit at **₹4,599**, or the combined IMU+sEMG-in-one-node option below | ≈₹27,000 – ₹1,08,000 complete garment suit (Athos / Myontec; indicative conversion) |
+
+**Sensor-minimization update:** for a segment that needs both kinematics and muscle activation (e.g. thigh during a squat), a single combined IMU+sEMG wearable is now the recommended option over two separate devices — e.g. the uMyo-class open-hardware node (**~₹3,860**, built-in IMU + magnetometer + EMG in one 9g PCB), which is cheaper than the standalone MyoWare 2.0 module alone. See [`LEDGER.md`](../LEDGER.md) row 21 for sourcing and the honesty caveat (open-hardware product, not independently peer-reviewed).
 
 ---
 

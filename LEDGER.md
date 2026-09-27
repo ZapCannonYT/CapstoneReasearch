@@ -54,37 +54,71 @@ All entries below have cleared all 16 curation passes without exception.
 | **18** | *British Journal of Sports Medicine*: Questioning the rules of engagement: a critical analysis of the use of limb symmetry index for safe return to sport after ACL reconstruction. | 2025 | **PMID:** [39797641](https://pubmed.ncbi.nlm.nih.gov/39797641/)<br>(PMC: [PMC11874420](https://pmc.ncbi.nlm.nih.gov/articles/PMC11874420/)) | Bilateral strength/hop-test ratios (Limb Symmetry Index). | No hardware — clinical test-battery protocol. | Verified live 2026-09-27: Abstract (top), Discussion (middle), Limitations (bottom), Conclusion (bottom), [pmc.ncbi.nlm.nih.gov/articles/PMC11874420](https://pmc.ncbi.nlm.nih.gov/articles/PMC11874420/). | **N/A**<br>(Assessment protocol) | Informs rehab-progress-tracking doc: LSI-alone criteria show poor discrimination between safe/unsafe return-to-sport. | Youden J $0.09-0.24$, AUC $0.50-0.59$ (near-chance discrimination) — LSI must be paired with other measures. | **APPROVED**<br>(New — rehab progress doc) |
 | **19** | *Gatorade Sports Science Institute — Sports Science Exchange*: Glucose Monitoring In Athletes Without Diabetes. | 2025 | **URL:** [gssiweb.org/sports-science-exchange/article/continuous-glucose-monitoring-use-in-athletes-without-diabetes](https://www.gssiweb.org/sports-science-exchange/article/continuous-glucose-monitoring-use-in-athletes-without-diabetes) | Interstitial glucose trace (CGM). | FreeStyle Libre sensor, 14-day wear (**~₹4,300/sensor**, India, range ₹4,200–₹5,249 across retailers). | Verified live 2026-09-27: named subsections "What is a 'Normal' CGM Reading", "Possible Applications of CGM in Sport", "Using CGM to Observe Training Load", "Potential Risks" (spread through page); India price directly verified live 2026-09-27 on [1mg.com](https://www.1mg.com/otc/freestyle-libre-system-sensor-otc616035): "₹4203" shown immediately below the product images and above the "Buy now"/"ADD" buttons (top of page); cross-checked against [indiamart.com](https://dir.indiamart.com/bengaluru/freestyle-libre-reader-sensor.html) listing (₹4,200). | **~1.0 / 10**<br>(Adhesive upper-arm sensor, worn continuously) | Energy availability, overnight nocturnal-hypoglycemia flag for under-recovery/overtraining — new metabolic/systemic marker. | Healthy athletes: euglycemic ($70-140\,\text{mg/dL}$) $\approx 80\%$ of time; nocturnal hypoglycemia (3–7 AM) observed in elite endurance athletes under high load. | **APPROVED**<br>(New — CGM doc) |
 | **20** | *Frontiers in Physiology*: An observational study of the reliability and concurrent validity of heart rate variability devices in athletes. | 2025 | **DOI:** 10.3389/fphys.2025.1707318 | RR-interval-derived HRV (RMSSD, pNN50) via chest strap, smartphone PPG, and ECG. | Chest-strap or MAX30102-class PPG HR module (**~₹90–₹295**, India). | Verified live 2026-09-27: Abstract (top), Results/Tables 3–4 (middle), Discussion (bottom), [frontiersin.org/.../fphys.2025.1707318/full](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1707318/full); India price directly verified live 2026-09-27 on [robokits.co.in](https://robokits.co.in/sensors/heart-beat-sensor/max30102-pulse-oximeter-heart-rate-upgraded-sensor-module-i2c-compatible): "₹295.00" shown in the page title/header, top of page. | **~0.3 / 10**<br>(Chest strap or wrist PPG, non-invasive) | Autonomic/cardiovascular systemic strain and recovery status — expands single HR row in muscle-fatigue doc into a full marker. | Chest strap RMSSD mean absolute % error $2.16\%$ vs. ECG gold standard; PPG app RMSSD error $17.49\%$ (acceptable, lower-cost alternative). | **APPROVED**<br>(New — HR/HRV doc) |
+| **21** | *uMyo (Ultimate Robotics), open-hardware product*: Wearable EMG sensor with wet/dry electrodes — built-in IMU and magnetometer in a single 9g PCB. | 2026 (v3, active) | **Source:** [udevices.io/products/umyo-wearable-emg-sensor](https://udevices.io/products/umyo-wearable-emg-sensor)<br>**Firmware/PCB:** [github.com/ultimaterobotics/uMyo](https://github.com/ultimaterobotics/uMyo) | Surface EMG + tri-axial acceleration/angular velocity + magnetometer heading, all from one wearable. | **$42.90 (~₹3,860 indicative conversion)** per unit — cheaper than sourcing a separate sEMG module (₹4,599) and IMU individually. | Verified live 2026-09-27: price shown at top of product page (udevices.io), directly below product title; hardware spec ("built-in IMU and magnetometer... 9g wearable PCB") confirmed on the linked Hackaday.io project log. | **~0.3 / 10**<br>(9×47×28mm bracelet-mounted PCB, dry or gel electrodes) | Individual muscle activation (from sEMG) + segment kinematics/drift-anchor (from onboard IMU) — **one physical node instead of two**, directly answering the session's sensor-minimization goal. | Open-hardware project; no independent gold-standard validation study located (flagged below). | **PARTIAL**<br>(Passes 1, 3–7 met; **Pass 02 exception:** open-hardware product page/firmware repo, not a peer-reviewed publication — include only as an engineering option, not as clinical-grade evidence) |
+| **22** | *Proc. ACM Interact. Mob. Wearable Ubiquitous Technol. (IMWUT)*: Motion2Press: Cross-Modal Learning from IMU to Plantar Pressure for Gait Analysis. | 2025 | **DOI:** 10.1145/3749499 | IMU-only tri-axial acceleration/angular velocity (no pressure insole). | None beyond the IMU already in the combined wearable (row 21) — **this is the ML pathway that lets plantar-pressure-derived metrics be inferred without a physical insole.** | Verified live 2026-09-27 via search-result abstract/summary (full-text behind ACM paywall, not directly page-browsed): "leverages IMU sensors to reconstruct foot pressure distribution in real-time... accurate inference of GRF and CoP using minimal IMU data." Confidence: **moderate** — qualitative claim confirmed, exact RMSE/error figures not independently verified (not fabricated here). | **N/A**<br>(Software inference layer) | Cross-modal-inferred Plantar Pressure Distribution, Ground Reaction Force, and Center of Pressure from IMU data alone. | Authors report "superior performance... in individual adaptability, spatiotemporal feature capture" vs. prior IMU-based baselines; exact RMSE not extracted from paywalled full text. | **APPROVED with caveat**<br>(Claim is qualitative-only; do not cite specific error percentages from this row) |
+| **23** | *BMVC 2024 Workshop (ANIMA — Advancing Non-invasive Human Motion Characterization)*: GRF-MV: Ground Reaction Force Estimation from Monocular Video. | 2024 | **Source:** [bmva-archive.org.uk/bmvc/2024/workshops/ANIMA/paper1.pdf](https://bmva-archive.org.uk/bmvc/2024/workshops/ANIMA/paper1.pdf)<br>Univ. of Birmingham record: [research.birmingham.ac.uk](https://research.birmingham.ac.uk/en/publications/grf-mv-ground-reaction-force-estimation-from-monocular-video/) | Single monocular RGB video (camera-only, no IMU, no insole). | ₹0 (uses the same primary smartphone camera already in the stack). | Verified live 2026-09-27 via search-result summary of the workshop paper (PDF text extraction failed — binary/compressed stream, not human-readable via WebFetch): 3D human mesh recovery (HybrIK-XL) + physics-based optimization + foot-contact modeling, evaluated on the GroundLink dataset. | **0.0 / 10**<br>(100% non-contact) | Camera-only estimated Ground Reaction Force — the furthest "offload onto the camera" option for GRF, no wearable at all. | Authors report "improved accuracy over prior [video-only] methods" on GroundLink; absolute RMSE/%BW error not extracted (workshop-tier paper, not yet journal-reviewed — treat as an emerging/promising direction, not a validated replacement for insoles or IMU-ML GRF estimation). | **PARTIAL**<br>(Pass 01–04 plausible; **Pass 02 caveat:** workshop paper, not full peer review — track for a journal version before relying on it for clinical-grade claims) |
 
 ---
 
-## 3. Physical Marker to Digital Twin Simulation Mapping Matrix
+## 3. Physical Marker to Digital Twin Simulation Mapping Matrix (Minimal-Sensor Revision)
 
-This matrix establishes the definitive translation from what can be collected on an exercising person to what is simulated within the digital twin:
+This matrix is reorganized by **physical device**, not by marker, to make the sensor-minimization goal explicit: everything the camera can carry is pushed onto the camera; everything IMU+sEMG can be inferred from stays on one combined wearable node; only what genuinely cannot be replicated any other way is left as an optional add-on.
 
 ```
-+------------------------------------+       +------------------------------------+
-|  PHYSICAL WEARABLE DATA COLLECTED  |  ==>  |    SIMULATED DIGITAL TWIN OUTPUT   |
-+------------------------------------+       +------------------------------------+
-| Tri-axial Segment Acceleration     |  -->  | Dynamic Joint Trajectories & Jerk  |
-| Tri-axial Angular Velocity         |  -->  | Joint Angles & Range of Motion (IK)|
-| Plantar Pressure Distribution      |  -->  | Vertical GRF & Center of Pressure  |
-| Normal Plantar Force + Kinematics  |  -->  | Net Joint Torques (Inverse Dyn)    |
-| Surface EMG Electrical Potentials  |  -->  | Individual Muscle Forces (CEINMS)  |
-| Paraspinal Motion Tape Strain      |  -->  | Lumbar L4/L5 Disc Shear & Strain   |
-| Quadriceps / Hamstring Joint Load  |  -->  | Patellofemoral Contact Stress (MPa)|
-| Multi-Set Velocity & sEMG MDF Loss |  -->  | Palmgren-Miner Fatigue Damage (D)  |
-+------------------------------------+       +------------------------------------+
++-----------------------------------------------------------------------------------------------+
+| [1] MONOCULAR CAMERA (₹0 — primary, carries the largest share of the load)                     |
++-----------------------------------------------------------------------------------------------+
+| 2D/3D Keypoint Trajectories          -->  Joint Angles, ROM, Form Deviation (IK)      [DIRECT] |
+| Body Mesh + Foot-Ground Contact      -->  Approx. Ground Reaction Force (GRF-MV, row 23) [ML-EST, emerging] |
++-----------------------------------------------------------------------------------------------+
+| [2] ONE COMBINED WEARABLE PER SEGMENT: IMU + sEMG IN A SINGLE NODE (e.g. uMyo-class, ~9g, row 21) |
++-----------------------------------------------------------------------------------------------+
+| Tri-axial Acceleration + Angular Vel -->  Segment Kinematics, Jerk, IMU drift-anchor  [DIRECT] |
+| Surface EMG Electrical Potentials    -->  Individual Muscle Forces (CEINMS), CCI      [DIRECT] |
+| (same IMU stream, no extra hardware) -->  Cross-modal-inferred Plantar Pressure/GRF/CoP        |
+|                                           (Motion2Press, row 22)                    [ML-EST]   |
++-----------------------------------------------------------------------------------------------+
+| [3] COMMODITY SMARTWATCH / FITNESS BAND (already owned — ₹0 marginal cost)                     |
++-----------------------------------------------------------------------------------------------+
+| Heart Rate / RR-Interval             -->  HRV, HR Recovery, Systemic/Autonomic Strain [DIRECT] |
++-----------------------------------------------------------------------------------------------+
+| [OPTIONAL / TERTIARY — add only when the use case specifically needs it (see §3.1)]             |
++-----------------------------------------------------------------------------------------------+
+| Plantar Pressure Insole (spatial map) -->  Sub-foot pressure hot-spots, static/isometric loading|
+|                                            (NOT replicable by camera or IMU — see §3.1)         |
+| Paraspinal Motion Tape Strain         -->  Lumbar L4/L5 Disc Shear & Strain                     |
+| CGM (recurring cost, off-label use)    -->  Metabolic/energy-availability trend                |
++-----------------------------------------------------------------------------------------------+
 ```
+*[DIRECT] = measured, not inferred. [ML-EST] = machine-learning-estimated proxy — useful for trend/flagging, not yet a drop-in replacement for a direct force-plate/insole measurement; treat with the confidence caveats in rows 22–23 above.*
+
+---
+
+### 3.1 How Useful Are Plantar Pressure Insoles, Really? (Minimal-Sensor Verdict)
+
+**Short answer: less essential than the original design assumed, but not zero-value — demote from "core" to "optional."**
+
+The case *for* dropping the dedicated insole:
+- IMU-only deep-learning GRF estimation already reaches **6.2% ± 1.8% BW error vs. Bertec force plates** (see [`02_cost_and_ergonomic_benchmarks/03_gold_standard_validation_benchmarks.md`](../02_cost_and_ergonomic_benchmarks/03_gold_standard_validation_benchmarks.md)), compared to the insole's own **4.8% ± 1.2% BW** (ledger row 09) — a real but modest accuracy gap, for one entire extra wearable.
+- **Motion2Press** (row 22) shows the IMU stream can be cross-modally decoded into plantar pressure distribution, GRF, *and* CoP directly — i.e., the one thing insoles were thought to uniquely provide (CoP) is starting to be inferable from IMU data already collected for kinematics.
+- **GRF-MV** (row 23) shows even the camera alone, with zero wearables, can produce an approximate GRF signal — the most aggressive offload option, still early-stage.
+
+The case *against* dropping it entirely:
+- **Spatial pressure mapping** (which part of the foot is overloaded — forefoot vs. rearfoot, medial vs. lateral) has no substitute in either IMU or camera data; this specific sub-foot detail is the insole's one truly unreplicated contribution.
+- **Static/isometric loading** (a held bottom-of-squat position, a single-leg balance hold, a plank) gives an IMU almost no signal to work with, since IMU-based estimation leans on acceleration dynamics — an insole measures force directly regardless of motion.
+
+**Recommendation:** keep plantar pressure insoles **out of the default/core stack** (camera + one combined IMU+sEMG node + smartwatch). Add an insole only for a specific downstream need — e.g. a clinical-style rehab assessment requiring true CoP/spatial mapping, or a static-hold exercise protocol — not as a standing part of every session.
 
 ---
 
 ## 4. Hardware Cost & Ergonomic Feasibility Synthesis
 
 ```
-  [ TOTAL CAPSTONE SYSTEM HARDWARE COST: ~₹8,500 (excl. indigenous IMU, already available) ]   <--- vs --->   [ CLINICAL MOTION LAB: ~₹1,85,00,000 ]
-  (Savings of >99.9%; fully wearable, zero tethering, non-invasive, validated against gold standards)
+  [ MINIMAL CORE STACK: Camera (₹0) + 1x combined IMU+sEMG node (~₹3,860) + smartwatch (already owned) ]
+  [ TOTAL ADDED HARDWARE COST: ~₹3,860 per limb segment instrumented ]   <--- vs --->   [ CLINICAL MOTION LAB: ~₹1,85,00,000 ]
+  (Savings of >99.99%; one wearable instead of two per segment; insole/motion-tape/CGM moved to optional tier — see §3.1)
 ```
-*Figures use verified India retail pricing for MyoWare 2.0 sEMG (₹4,599) and FSR insole cells (₹409 each) where sourced live; niche items (motion tape, piezoelectric patches, microfluidic patches) use an indicative ₹90/US$1 conversion flagged in the table above where no India vendor listing was found. IMU sensing hardware is excluded from this cost total — an indigenous IMU sensor is already available for this project.*
+*The ₹8,500 figure from the previous revision assumed a separate sEMG module (₹4,599) plus a separate insole. Per the sensor-minimization pass in §3/§3.1, the recommended default now combines IMU+sEMG into one ~₹3,860 node (row 21) and drops the insole from the core stack, so the added-hardware total falls even further. Niche items (motion tape, piezoelectric patches, microfluidic patches) remain indicative-conversion figures where no India vendor listing was found. IMU sensing hardware sourced separately is still excluded — either the indigenous sensor or the combined uMyo-class node covers it.*
 
 - **Total Sensor Node Mass:** Distal nodes (feet/shanks) remain under $12\,\text{g}$, avoiding any detectable mass moment of inertia or metabolic penalty.
 - **Form Factor:** Low-profile ($9.5\,\text{mm}$) chamfered TPU casings prevent catching on gym barbells or clothing.

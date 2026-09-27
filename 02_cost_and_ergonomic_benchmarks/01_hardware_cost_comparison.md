@@ -44,11 +44,12 @@ The accessible suite is built around the **camera as the default, zero-cost moda
 - **What it replaces:** Global 3D anchor and gross kinematic tracking — see [`01_physical_markers_and_wearables/06_camera_only_capability_boundaries.md`](../01_physical_markers_and_wearables/06_camera_only_capability_boundaries.md) for exactly what is and is not measurable this way.
 - *Subtotal:* **₹0**
 
-### 3.2 Optional Add-On: sEMG Neuromuscular Pod
+### 3.2 Optional Add-On: sEMG Neuromuscular Pod (now combinable with IMU in one node)
 - **Sensor:** 1–2x MyoWare 2.0 Muscle Sensor module(s):
   - ₹4,599 × 1–2 = **₹4,599 – ₹9,198**
 - **Electrodes:** Reusable conductive silicone dry-contact electrodes (washable): **≈₹900/pack of 10** (indicative; India vendor not individually verified for this SKU).
 - *Subtotal:* **≈₹5,500 – ₹10,100**
+- **Minimal-sensor alternative:** skip the standalone sEMG module and the separate IMU line entirely — a single uMyo-class combined IMU+sEMG node (**~₹3,860**, [LEDGER.md](../LEDGER.md) row 21) covers both signals from one 9g wearable per segment, at lower cost than sourcing the two separately. See [`LEDGER.md`](../LEDGER.md) §3/§3.1 for the full minimal-sensor-stack rationale, including why plantar pressure insoles are now optional rather than default.
 
 ### 3.3 Optional Add-On: CGM Metabolic Pod
 - **Sensor:** 1x FreeStyle Libre sensor (14-day wear): **₹4,200 – ₹5,249**.

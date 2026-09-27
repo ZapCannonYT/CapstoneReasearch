@@ -1,6 +1,9 @@
 # Kinetic Markers and Wearable Plantar Pressure Insoles for Ground Reaction Force Estimation
 
 ## 1. Executive Summary & Role in Musculoskeletal Digital Twins
+
+**Sensor-minimization note:** a later pass reassessed whether a dedicated insole belongs in the *default* low-budget stack, given that IMU-only and even camera-only GRF/CoP estimation are both improving quickly. Verdict and citations: [`LEDGER.md`](../LEDGER.md) §3.1 "How Useful Are Plantar Pressure Insoles, Really?" — insoles are now positioned as an **optional/tertiary** add-on (for spatial pressure mapping and static/isometric loads specifically), not part of the core camera + combined-wearable + smartwatch stack. The marker theory below is unaffected; only its priority in the recommended default build changed.
+
 In classical biomechanics, computing internal joint torques, muscle-tendon forces, and cartilage contact strains requires solving the Inverse Dynamics (ID) equations of motion. However, ID calculations demand knowledge of external ground reaction forces (GRFs) and centers of pressure (CoP). In clinical motion laboratories, GRFs are measured using recessed multi-axis piezoelectric force plates (e.g., Kistler, Bertec), which cost $\$25,000 - \$80,000$ and constrain movement to rigid laboratory strike surfaces. Wearable smart insoles and kinematic-driven machine learning models provide continuous, mobile, and cost-effective kinetic boundary conditions for 3D Musculoskeletal Digital Twins (MS-DT) during unconstrained exercise.
 
 ---
