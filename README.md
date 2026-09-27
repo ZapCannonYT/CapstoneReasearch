@@ -156,5 +156,56 @@ All 20 literature items and empirical benchmarks have cleared the **16-pass fact
 
 ---
 
-## 7. License
+## 7. Honest Capability Inference: What Can Actually Be Tracked & Simulated on the 3D DT
+
+Section 3 shows what each physical marker *maps to* in theory. This section is the blunter question the ledger evidence (rows 1–23) actually supports: **given the minimal-sensor stack, what does the Digital Twin genuinely know, versus what would be a model-side guess dressed up as a number?** Status tags: **DIRECT** = measured, sensor-grounded. **ML-EST** = inferred by a learned model from a different signal — useful for trends/flags, not a substitute for the real measurement. **NOT ACHIEVABLE** = no path in the current evidence base.
+
+### 7.1 Camera alone (₹0, always-on, the default tier)
+
+| DT Output | Status | Evidence |
+| :--- | :--- | :--- |
+| 3D joint angles, continuous ROM | **DIRECT** | Row 1 (RMSE $1.82^\circ \pm 0.45^\circ$, $r=0.98$ vs. Vicon); Row 13 OpenCap ($2.8^\circ$–$4.1^\circ$); Row 17 camera-only Heliyon study (within $10^\circ$, up to $15^\circ$ on a few metrics) |
+| Rep counting, tempo, eccentric/concentric phase split | **DIRECT** | Same keypoint stream as above; classification logic validated on IMU in Row 3, ported to camera keypoints |
+| Frontal-plane form deviation, gross bilateral asymmetry | **DIRECT, coarse** | Row 17 |
+| Approximate Ground Reaction Force, zero wearable | **ML-EST, emerging — not yet reliable** | Row 23 (GRF-MV): workshop-tier paper, no extracted error margin; "promising direction," not a number to trust in the DT display |
+| Internal joint moments ($\boldsymbol{\tau}$), individual muscle force, tissue/cartilage strain, metabolic state | **NOT ACHIEVABLE from camera alone** | These all require a force or physiological signal the camera cannot see |
+
+**Honest read:** the camera reliably reconstructs the DT's *shape* — the skeleton and how it moves — at near-clinical accuracy. That alone is enough to drive ROM trend tracking, form-fault flags, and asymmetry alerts for rehab progress. It cannot honestly drive anything downstream of forces.
+
+### 7.2 + One combined IMU+sEMG node per key segment (uMyo-class, ~₹3,860, Row 21)
+
+| DT Output | Status | Evidence |
+| :--- | :--- | :--- |
+| Individual muscle activation & force ($a_m(t)$, $F_m^{MT}$), Co-Contraction Index | **DIRECT** | Row 4 ($r=0.93\pm0.04$ vs. clinical Delsys), Row 21 |
+| Segment kinematics redundant with/backup to camera (handles occlusion) | **DIRECT** | Row 14, 15 (IMU drift-corrected via EKF/ZUPT) |
+| Plantar pressure, GRF, CoP — inferred from the same IMU stream, no insole | **ML-EST, moderate confidence** | Row 22 (Motion2Press): qualitative capability confirmed from the source abstract; exact RMSE was behind a paywall and is **not** claimed here — do not display a precision figure the ledger doesn't support |
+| Net joint moments (Inverse Dynamics), via the ML-inferred GRF above | **ML-EST, compounding uncertainty** | Depends on Row 22's un-quantified error propagating into the multibody solver — treat as directional/trend-level, not an absolute number |
+| Cartilage/tendon FEA-surrogate stress | **ML-EST, same caveat as above** | Row 16's surrogate is only as good as the GRF/moment inputs it receives; with an ML-inferred GRF upstream, output stress values are illustrative, not clinical |
+
+**Honest read:** this single upgrade is the highest-leverage one in the whole stack — it turns muscle force from a complete unknown into a direct measurement. It also *unlocks* a full kinetics chain (moments → cartilage stress) for the first time without any insole, but every step past the sEMG itself inherits Row 22's un-quantified uncertainty. Display these as trends ("your estimated knee loading is rising week over week"), not as absolute clinical values.
+
+### 7.3 + Commodity smartwatch/band (HR/HRV, ₹0 marginal — already owned)
+
+| DT Output | Status | Evidence |
+| :--- | :--- | :--- |
+| HR, HRV (RMSSD), HR-recovery slope | **DIRECT** | Row 20 (chest strap: $2.16\%$ mean error vs. ECG; wrist PPG: $17.49\%$ error — usable, not lab-grade) |
+
+**Honest read:** this is a **parallel systemic layer**, not an input to the joint/muscle mesh. It never touches Inverse Kinematics, Inverse Dynamics, or muscle-force estimation — it exists purely to answer "how is this person's body recovering," feeding the rehab-progress report alongside the mesh, not into it.
+
+### 7.4 What only a session-specific optional add-on still restores
+
+| DT Output | Status | Evidence |
+| :--- | :--- | :--- |
+| True spatial pressure map (forefoot/rearfoot, medial/lateral) + static/isometric-hold GRF | **DIRECT, only via a physical insole** | Row 9 ($4.8\%\pm1.2\%$ BW vs. Kistler); see [`LEDGER.md`](LEDGER.md) §3.1 — no camera or IMU substitute exists for these two specific cases |
+| Interstitial glucose trend, overtraining/under-fueling flag | **DIRECT, only via CGM** | Row 19 — a metabolic marker, entirely outside the biomechanical mesh |
+
+**Add these only when the session specifically needs them** (a clinical-style CoP assessment, a static-hold protocol, or a metabolic-recovery question) — not as a standing part of the default stack.
+
+### 7.5 Bottom line
+
+With **just the camera**, the DT can honestly show a person's skeleton, its motion, and trends in that motion — good enough for rehab ROM tracking, movement-quality flags, and asymmetry alerts, at accuracy within a few degrees of a Vicon lab. It cannot honestly show internal forces, muscle effort, or tissue stress — any such number displayed at this tier would be invented, not measured. Adding **one combined IMU+sEMG node per key segment** is the one upgrade worth making: it converts "muscle force" into a real measurement and, via Row 22's cross-modal inference, opens a full but ML-estimated kinetics chain good for spotting trends, not for clinical certification. The **smartwatch** and **CGM** layers never feed the biomechanical mesh at all — they run in parallel, reporting on recovery and metabolic status alongside whatever the mesh shows about movement. Full force-plate-grade kinetics and true spatial pressure mapping still require the **optional insole**, brought in only for the specific sessions that need it (see [`LEDGER.md`](LEDGER.md) §3.1).
+
+---
+
+## 8. License
 Per the project guidelines, no license is attached.
