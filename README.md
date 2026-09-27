@@ -145,6 +145,7 @@ The complete scientific documentation is organized into modular directories:
 │   ├── 01_continuous_glucose_monitoring_markers.md # CGM as an energy-availability/recovery/overtraining marker
 │   └── 02_heart_rate_and_hrv_markers.md         # HR/HRV as the cheapest systemic/autonomic strain marker
 ├── LEDGER.md                                    # Master verified evidence ledger (PMIDs/DOIs + page-section source location)
+├── SENSOR_UTILITY_AND_DT_CAPABILITY.md          # Mentor briefing: per-sensor role/utility + honest DT capability ceiling
 └── README.md                                    # Master repository overview and technical documentation
 ```
 
