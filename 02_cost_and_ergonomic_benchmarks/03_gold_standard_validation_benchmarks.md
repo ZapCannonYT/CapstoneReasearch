@@ -50,12 +50,14 @@ Ground reaction force (GRF) and center of pressure (CoP) validation across bilat
 | Kinetic Metric | Validation Hardware vs. Reference | RMSE (% Body Weight) | Pearson $r$ | Relative Peak Error (%) |
 | :--- | :--- | :--- | :--- | :--- |
 | **Vertical GRF ($F_z$)** | Capacitive / FSR Insole vs. Kistler | **$4.8\% \pm 1.2\%$ BW** | **$0.98$** | **$3.2\% \pm 1.5\%$** |
-| **Vertical GRF ($F_z$)** | Deep Learning (IMU-only) vs. Bertec | **$6.2\% \pm 1.8\%$ BW** | **$0.96$** | **$4.9\% \pm 2.1\%$** |
+| **Vertical GRF ($F_z$)** | Deep Learning, 3× IMU-only (no insole) vs. lab reference [^imu-grf] | **$6.8\%$ BW** | **$0.97$** | — |
 | **Anteroposterior GRF ($F_y$)** | Multi-sensor Insole vs. Kistler | **$3.8\% \pm 0.9\%$ BW** | **$0.94$** | **$5.5\% \pm 2.4\%$** |
 | **CoP Anteroposterior Path** | Insole Pressure Matrix vs. Force Plate | **$4.2 \pm 1.1\,\text{mm}$** | **$0.97$** | **$2.8\% \pm 1.1\%$** |
 | **Rate of Force Development (RFD)**| Insole Array vs. Piezoelectric Plate | **$5.4\% \pm 1.6\%$** | **$0.95$** | **$4.1\% \pm 1.8\%$** |
 
-*Key Takeaway:* Smart insoles capture continuous vertical loading profiles with peak force discrepancies under $5\%$, providing valid ground kinetics to drive downstream Inverse Dynamics solvers.
+*Key Takeaway:* Smart insoles capture continuous vertical loading profiles with peak force discrepancies under $5\%$, providing valid ground kinetics to drive downstream Inverse Dynamics solvers. The IMU-only alternative reaches comparable vertical-GRF accuracy using 3 simultaneous IMU nodes and no insole at all, but its mediolateral component is unreliable ($r=0.58$ per [^imu-grf]) — treat vertical GRF from this pathway as usable, and mediolateral as not.
+
+[^imu-grf]: Scheltinga BL, Kok JN, Buurke JH, Reenalda J. *Estimating 3D ground reaction forces in running using three inertial measurement units.* Front Sports Act Living. 2023;5:1176466. PMID: 37255726, DOI: 10.3389/fspor.2023.1176466. Verified live 2026-09-28, exact figures quoted from the Abstract (6.8%/7.8%/10.8% BW RMSE and r=0.97/0.91/0.58 for vertical/AP/mediolateral respectively). See [`LEDGER.md`](../LEDGER.md) row 24. This replaces a previously-cited figure (6.2% ± 1.8% BW) that could not be traced to any verifiable source.
 
 ---
 

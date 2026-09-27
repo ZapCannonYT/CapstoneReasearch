@@ -12,7 +12,11 @@ Measures 2D pixel-space body keypoints from RGB video (30-60 fps). Feeds the DT 
 
 ### One Combined IMU + sEMG Node per Key Segment — ~₹3,860, uMyo-class (Row 21)
 
-A single 9g PCB measuring both acceleration/angular velocity (IMU) and muscle electrical potential (sEMG). Gives the DT individual muscle activation and force, co-contraction index, and segment kinematics as a camera backup during occlusion. Both signals are direct measurements: sEMG agreement with clinical Delsys systems is r = 0.93 ± 0.04 (Row 4); IMU drift is corrected via EKF/ZUPT (Rows 14-15). A standalone sEMG module plus a standalone IMU would cost more and add a second wearable for no accuracy gain, so the combined node replaces both. The same IMU stream can also be cross-modally decoded into plantar pressure, GRF, and CoP without an insole (Row 22, Motion2Press) — this is what makes Inverse Dynamics possible without extra hardware, though the source's exact error figures were paywalled and are not claimed here; treat that output as a trend, not an absolute number. Note: uMyo itself is an open-hardware product, not a peer-reviewed validation study (Row 21, flagged partial) — the 9g/IMU+EMG+magnetometer spec is solid, but no independent lab study benchmarks this specific product.
+A single 9g PCB measuring both acceleration/angular velocity (IMU) and muscle electrical potential (sEMG). One node on a key segment gives the DT individual muscle activation and force, co-contraction index, and segment kinematics as a camera backup during occlusion. Both signals are direct measurements: sEMG agreement with clinical Delsys systems is r = 0.93 ± 0.04 (Row 4); IMU drift is corrected via EKF/ZUPT (Rows 14-15). A standalone sEMG module plus a standalone IMU would cost more and add a second wearable for no accuracy gain, so the combined node replaces both.
+
+Ground Reaction Force needs more than one node. With 3 of these nodes worn at once (pelvis plus two lower-limb segments), a verified study reaches 6.8% BW error on vertical GRF, r = 0.97 (Row 24) — close to what a physical insole gets (4.8% ± 1.2% BW, Row 9) — which is what makes a real Inverse Dynamics chain possible without any insole. Its anteroposterior component is also usable (7.8% BW, r = 0.91), but its mediolateral component is weak (r = 0.58) and should not be relied on. A separate, lighter pathway (Row 22, Motion2Press) can infer plantar pressure and CoP from a single node's IMU stream, but only qualitatively — its exact error was never independently verified, so treat it as a trend signal, not a number.
+
+Note: uMyo itself is an open-hardware product, not a peer-reviewed validation study (Row 21, flagged partial) — the 9g/IMU+EMG+magnetometer spec is solid, but no independent lab study benchmarks this specific product.
 
 ### Commodity Smartwatch / Fitness Band — already owned, ₹0 marginal
 
@@ -22,7 +26,7 @@ Measures heart rate and RR-interval via PPG or chest strap. Gives HRV (RMSSD) an
 
 | Sensor | What it uniquely restores | Why it stays optional |
 | :--- | :--- | :--- |
-| Plantar pressure insole | Sub-foot spatial pressure map and static/isometric-hold GRF, where IMU has little motion signal to work from (Row 9: 4.8% ± 1.2% BW) | Not a front-line focus — IMU-only GRF is already close for dynamic movement (6.2% ± 1.8% BW); see `LEDGER.md` §3.1 |
+| Plantar pressure insole | Sub-foot spatial pressure map and static/isometric-hold GRF, where IMU has little motion signal to work from (Row 9: 4.8% ± 1.2% BW) | Not a front-line focus — 3-node IMU-only GRF is already close for dynamic movement (6.8% BW vertical, Row 24); see `LEDGER.md` §3.1 |
 | Paraspinal motion tape | Lumbar L4/L5 shear/strain and spinal flexion curvature during heavy hinge movements (Row 6) | Niche use case, no verified India vendor pricing yet |
 | Continuous Glucose Monitor (CGM) | Interstitial glucose trend, nocturnal-hypoglycemia flag for under-recovery/overtraining (Row 19) | Purely metabolic, outside the biomechanical mesh, and a recurring cost (~₹4,200-5,249 per 14-day sensor) rather than one-time |
 
@@ -43,16 +47,17 @@ Measures heart rate and RR-interval via PPG or chest strap. Gives HRV (RMSSD) an
 
 ## 3. Digital Twin Capability Ceiling
 
-| DT Output | Status with camera + 1 combined node + smartwatch | To make it fully trustworthy |
+| DT Output | Status with camera + combined node(s) + smartwatch (1 node unless noted) | To make it fully trustworthy |
 | :--- | :--- | :--- |
 | 3D joint angles, ROM, rep/tempo, gross asymmetry | Direct, near-clinical (within a few degrees of Vicon) | Already there |
 | Individual muscle activation & force, co-contraction | Direct (sEMG in the combined node) | Already there |
 | HRV / recovery trend | Direct, but a parallel systemic layer, separate from the biomechanical mesh | Already there |
-| GRF & Center of Pressure (dynamic movement) | ML-estimated from the IMU stream (Motion2Press pathway) — useful for trend/flagging, error not independently verified | A physical insole for that session, or a peer-reviewed replication of Motion2Press with quantified error |
-| Net joint moments (Inverse Dynamics) | ML-estimated, inherits the GRF-estimation uncertainty above | Same as above — show as a trend, not an absolute torque value, until validated |
+| Vertical & anteroposterior GRF | ML-estimated, but quantified: 6.8% BW / r=0.97 vertical, 7.8% BW / r=0.91 AP, with **3 IMU nodes worn at once** (Row 24) — one combined node alone isn't enough | Already achievable with the right node count; a physical insole only improves on this marginally (4.8% BW) |
+| Mediolateral GRF, Center of Pressure | ML-estimated and unreliable (mediolateral r=0.58, Row 24) or qualitative-only (Motion2Press, Row 22) | A physical insole for that session, or a peer-reviewed replication with a better mediolateral result |
+| Net joint moments (Inverse Dynamics) | ML-estimated, inherits Row 24's vertical/AP accuracy (usable) and mediolateral weakness (not usable) | Usable for the sagittal-plane moments that matter most in squats/deadlifts/hinges; treat frontal-plane moments as unreliable until a better mediolateral estimate exists |
 | Cartilage/tendon stress (FEA surrogate) | ML-estimated, inherits the same upstream uncertainty a second time | Same as above, plus subject-specific FEA calibration |
 | True spatial plantar pressure map, static/isometric-hold GRF | Not achievable without the optional insole | Add the insole for that specific session |
 | Lumbar L4/L5 shear strain | Not achievable without the optional motion tape | Add the motion tape for that specific session |
 | Metabolic / energy-availability state | Not achievable without the optional CGM, and even then parallel to, not fused with, the mesh | Add the CGM for that specific tracking period |
 
-**Summary:** camera plus one combined IMU+sEMG node per key segment (plus a smartwatch already owned) directly and reliably reconstructs a person's skeleton, its motion, and individual muscle activation — enough for rehab ROM tracking, movement-quality flags, and asymmetry alerts at clinically-adjacent accuracy. It also produces a first-pass kinetics chain (GRF, joint moments, tissue stress) at no extra hardware cost, but every number past the sEMG itself is currently a machine-learning estimate riding on an unquantified error bar, not a validated measurement — present it as a trend, not a clinical figure, until a properly benchmarked replication exists. Force-plate-grade kinetics, true spatial pressure mapping, spinal shear strain, and metabolic status all remain achievable by adding the relevant optional sensor for the specific session or question that needs it, but none of them belong in the default always-on stack.
+**Summary:** camera plus one combined IMU+sEMG node per key segment (plus a smartwatch already owned) directly and reliably reconstructs a person's skeleton, its motion, and individual muscle activation — enough for rehab ROM tracking, movement-quality flags, and asymmetry alerts at clinically-adjacent accuracy. Wearing 3 of those same nodes at once (not just one) unlocks a quantified, verified GRF estimate for the vertical and anteroposterior directions — good enough to drive sagittal-plane joint moments and tissue-stress trends without any insole. The mediolateral direction and true spatial pressure mapping stay unreliable from IMU or camera data alone, regardless of node count. Force-plate-grade kinetics in that one direction, true spatial pressure mapping, spinal shear strain, and metabolic status all remain achievable by adding the relevant optional sensor for the specific session or question that needs it, but none of them belong in the default always-on stack.

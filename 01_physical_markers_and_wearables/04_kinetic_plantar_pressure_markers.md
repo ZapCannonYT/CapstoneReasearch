@@ -57,14 +57,13 @@ Wearable kinetic devices measure three physical domains:
 ---
 
 ## 5. Machine Learning-Based Kinematic-to-Kinetic GRF Prediction
-For minimal hardware setups where users wear only IMUs and no physical insoles, recent biomechanical research (2021–2026) has validated neural network surrogate models capable of directly synthesizing 3D GRFs:
-- **Architecture:** Bidirectional Long Short-Term Memory (BiLSTM) or temporal Temporal Convolutional Networks (TCN) / Transformers.
-- **Inputs:** Tri-axial accelerations and angular velocities from 3 to 7 IMU segments (pelvis, thighs, shanks, feet) + subject body mass ($m$).
-- **Output:** Continuous 3D vector $\mathbf{F}_{\text{GRF}}(t) = [F_x, F_y, F_z]^T$ and $\mathbf{p}_{\text{CoP}}(t)$.
-- **Validation Accuracy vs. Force Plates:**
-  - Vertical GRF ($F_z$): Normalized RMSE $\approx 4.5\% - 7.2\%$ Body Weight (BW); $r > 0.97$.
-  - Anteroposterior GRF ($F_y$): Normalized RMSE $\approx 3.2\% - 5.1\%$ BW; $r > 0.94$.
-  - Mediolateral GRF ($F_x$): Normalized RMSE $\approx 2.1\% - 4.0\%$ BW; $r > 0.88$.
+For minimal hardware setups where users wear only IMUs and no physical insole, one directly-verified study (Row 24 in [`LEDGER.md`](../LEDGER.md); see the correction note below) demonstrates a neural network model synthesizing 3D GRF from IMU data alone:
+- **Architecture:** hybrid neural network (per the source paper).
+- **Inputs:** tri-axial accelerations and angular velocities from **3 simultaneous IMU nodes** (pelvis + two lower-limb segments) + subject body mass ($m$).
+- **Output:** continuous 3D vector $\mathbf{F}_{\text{GRF}}(t) = [F_x, F_y, F_z]^T$.
+- **Validation accuracy vs. lab reference (verified quote, Abstract):** vertical GRF RMSE $6.8\%$ BW, $r=0.97$; anteroposterior RMSE $7.8\%$ BW, $r=0.91$; **mediolateral RMSE $10.8\%$ BW, $r=0.58$ — weak, do not rely on this component.**
+
+**Correction (2026-09-28):** this section previously cited three papers (IEEE Trans Neural Syst Rehabil Eng 2024, DOI 10.1109/TNSRE.2024.3361280; J Biomech 2022, DOI 10.1016/j.jbiomech.2022.110976; Sensors 2023, DOI 10.3390/s23052781) with a broader claimed accuracy range (4.5%-7.2% BW). Live verification found the first two DOIs do not resolve to any matching paper, and the third resolves to an unrelated paper on healthcare-worker ergonomics, not GRF/insoles. Those three citations have been removed and replaced with the single verified paper above.
 
 ---
 
@@ -85,6 +84,4 @@ For minimal hardware setups where users wear only IMUs and no physical insoles, 
 
 - **PLOS Digit Health (2026):** *Structure-aware fatigue modeling in foot deformities: A digital health framework for tissue-specific running injury risk prediction using multi-modal data.* PMID: 42430352; DOI: 10.1371/journal.pdig.0000542.
 - **J Neuroeng Rehabil (2026):** *Biomechanical effects of passive exosuit assistance on tibiofemoral loading and dynamic stability during downhill walking.* PMID: 42277840; DOI: 10.1186/s12984-026-01389-1.
-- **IEEE Trans Neural Syst Rehabil Eng (2024):** *Continuous Ground Reaction Force and Moment Estimation Using Inertial Sensors and Deep Neural Networks Across Multi-Task Locomotion.* DOI: 10.1109/TNSRE.2024.3361280.
-- **Sensors (Basel) (2023):** *Validation of Low-Cost Insole Force Sensors for Ground Reaction Force and Center of Pressure Estimation During Dynamic Athletic Drills.* DOI: 10.3390/s23052781.
-- **J Biomech (2022):** *Estimation of continuous ground reaction forces during running using lower-body wearable inertial sensors and deep learning.* DOI: 10.1016/j.jbiomech.2022.110976.
+- **Frontiers in Sports and Active Living (2023):** *Estimating 3D ground reaction forces in running using three inertial measurement units.* PMID: 37255726; DOI: 10.3389/fspor.2023.1176466. (Replaces three previously-cited DOIs that failed live verification — see the correction note in Section 5 above.)
