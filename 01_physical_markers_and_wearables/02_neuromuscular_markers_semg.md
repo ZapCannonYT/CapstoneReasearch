@@ -86,7 +86,7 @@ Following SENIAM (Surface ElectroMyoGraphy for the Non-Invasive Assessment of Mu
 | **Exercise Longevity** | Gel dries after 45–90 min; sweat disrupts adhesive contact. | Stable over several hours; sweat actually lowers contact impedance. | Breathable, washable, durable for repeated heavy training sessions. |
 | **Motion Artifact** | Moderate (lead wires tugging on snap connectors). | Low (rigidly encapsulated wireless node directly over skin). | Extremely low when compression fit prevents skin sliding. |
 | **Mass & Form Factor** | Lightweight electrodes, but bulky tethered junction boxes. | $10 - 25\,\text{g}$ per wireless node. | Integrated conductive silver-plated yarn into garment. |
-| **System Cost** | $\$15,000 - \$40,000$ (Delsys Trigno / Noraxon) | $\$150 - \$500$ per channel (Movesense / OpenBCI) | $\$300 - \$1,200$ complete garment suit (Athos / Myontec) |
+| **System Cost (India, ₹)** | ≈₹13,50,000 – ₹36,00,000 (Delsys Trigno / Noraxon; indicative conversion) | ≈₹13,500 – ₹45,000 per channel (Movesense / OpenBCI; indicative conversion) — for the accessible tier, prefer the verified MyoWare 2.0 unit at **₹4,599** (see [`../02_cost_and_ergonomic_benchmarks/01_hardware_cost_comparison.md`](../02_cost_and_ergonomic_benchmarks/01_hardware_cost_comparison.md)) | ≈₹27,000 – ₹1,08,000 complete garment suit (Athos / Myontec; indicative conversion) |
 
 ---
 

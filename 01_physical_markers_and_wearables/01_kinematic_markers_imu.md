@@ -1,7 +1,7 @@
 # Kinematic Markers and Inertial Measurement Units (IMUs) in Exercise Biomechanics
 
 ## 1. Executive Overview & Role in Musculoskeletal Digital Twins
-Inertial Measurement Units (IMUs) form the backbone of field-based kinematic data acquisition for 3D Musculoskeletal Digital Twins (MS-DT). While optical motion capture (OMC; e.g., Vicon, Qualisys) represents the laboratory gold standard, its high capital cost ($50,000–$250,000) and line-of-sight confinement render it unsuitable for ubiquitous exercise analysis. Modern 6-DOF and 9-DOF MEMS IMUs capture continuous multi-segment kinematics during high-velocity and loaded exercises (e.g., squats, deadlifts, Olympic lifts, sprinting), serving as direct inputs to numerical Inverse Kinematics (IK) engines such as OpenSim OpenSense.
+Inertial Measurement Units (IMUs) form the backbone of field-based kinematic data acquisition for 3D Musculoskeletal Digital Twins (MS-DT). While optical motion capture (OMC; e.g., Vicon, Qualisys) represents the laboratory gold standard, its high capital cost (≈₹45,00,000–₹2,25,00,000, indicative conversion) and line-of-sight confinement render it unsuitable for ubiquitous exercise analysis. Modern 6-DOF and 9-DOF MEMS IMUs capture continuous multi-segment kinematics during high-velocity and loaded exercises (e.g., squats, deadlifts, Olympic lifts, sprinting), serving as direct inputs to numerical Inverse Kinematics (IK) engines such as OpenSim OpenSense.
 
 ---
 
@@ -92,12 +92,14 @@ To align the IMU technical coordinate system ($TCS$) with the anatomical segment
 
 ## 6. Representative Hardware Specifications & Research Benchmarks
 
-| Hardware Platform | Sensor Architecture | Onboard Processing | Wireless Latency & Protocol | Battery Life & Mass | Approx. Cost (Per Node) |
+*Sourcing note: this project already has an indigenous IMU sensor available, so no IMU is being purchased — the cost column below is retained purely as background comparison of the sensing architectures these commercial/research-grade IMUs represent, not as a shopping list.*
+
+| Hardware Platform | Sensor Architecture | Onboard Processing | Wireless Latency & Protocol | Battery Life & Mass | Reference Cost (Not Being Procured) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Bosch Sensortec BNO085 / BMI270** | 9-DOF (ARM Cortex-M0+ fusion processor) | Onboard EKF quaternions, step counter, tap detection | SPI / I2C / BLE (via nRF52840) ~10 ms | >12 hrs (150 mAh LiPo), 12g | $15 – $35 (Open Source Module) |
-| **TDK InvenSense ICM-42688-P** | 6-DOF Ultra-low noise IMU (0.28 mdps/$\sqrt{\text{Hz}}$) | FIFO buffer, anti-aliasing hardware filters | SPI / BLE ~8 ms | >18 hrs, 8g | $10 – $25 (Component level) |
-| **Movesense Medical / MD** | 9-DOF + 1-lead ECG | Embedded Nordic SoC, programmable firmware | BLE 5.0 (up to 500 Hz stream) ~15 ms | 24–48 hrs (CR2025 coin), 9.4g | $120 – $200 (Commercial/Clinical) |
-| **Movella Xsens DOT** | 9-DOF Industrial MEMS | Proprietary sensor fusion engine, magnetic immunity | Bluetooth 5.0 High-throughput ~15 ms | 6 hrs, 11.2g | $350 – $500 (Research grade) |
+| **Bosch Sensortec BNO085 / BMI270** | 9-DOF (ARM Cortex-M0+ fusion processor) | Onboard EKF quaternions, step counter, tap detection | SPI / I2C / BLE (via nRF52840) ~10 ms | >12 hrs (150 mAh LiPo), 12g | *(architecture reference only — indigenous IMU used instead)* |
+| **TDK InvenSense ICM-42688-P** | 6-DOF Ultra-low noise IMU (0.28 mdps/$\sqrt{\text{Hz}}$) | FIFO buffer, anti-aliasing hardware filters | SPI / BLE ~8 ms | >18 hrs, 8g | *(architecture reference only — indigenous IMU used instead)* |
+| **Movesense Medical / MD** | 9-DOF + 1-lead ECG | Embedded Nordic SoC, programmable firmware | BLE 5.0 (up to 500 Hz stream) ~15 ms | 24–48 hrs (CR2025 coin), 9.4g | *(architecture reference only — indigenous IMU used instead)* |
+| **Movella Xsens DOT** | 9-DOF Industrial MEMS | Proprietary sensor fusion engine, magnetic immunity | Bluetooth 5.0 High-throughput ~15 ms | 6 hrs, 11.2g | *(architecture reference only — indigenous IMU used instead)* |
 
 ---
 

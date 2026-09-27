@@ -64,7 +64,7 @@ In heavy compound lifts (squats, deadlifts, cleans), maintaining a neutral lumba
 | **Thickness / Profile** | $<0.5\,\text{mm}$ (skin-like patch) | $8 - 15\,\text{mm}$ rigid casing | $14\,\text{mm}$ spherical protrusion |
 | **Motion Impedance** | Zero resistance; conforms to skin elasticity | Slight inertia; strap tension required | None (strictly laboratory bound) |
 | **Sweat Resistance** | Hydrophobic silicone / encapsulated TPU | Water-resistant housing (IP67) | Non-electronic |
-| **Component Fabrication Cost** | $\$5 - \$25$ per sensor patch | $\$20 - \$150$ per wireless node | $\$50,000+$ camera infrastructure |
+| **Component Fabrication Cost (India, ₹)** | ≈₹450 – ₹2,250 per sensor patch (indicative conversion, India vendor not verified) | Indigenous IMU — already available (no sourcing cost) | ≈₹45,00,000+ camera infrastructure (indicative conversion) |
 
 ---
 

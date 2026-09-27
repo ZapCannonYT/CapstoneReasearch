@@ -67,12 +67,14 @@ For minimal hardware setups where users wear only IMUs and no physical insoles, 
 
 ## 6. Hardware Benchmarks & Cost Feasibility
 
-| System / Model | Sensor Count & Type | Sampling Rate | Wireless / Telemetry | Approx. Cost | Suitability for General Population |
+*Sourcing note: this project already has an indigenous IMU sensor available, so figures below reflect the insole/pressure-sensing product cost only — any IMU bundled inside a commercial product (Arion, Moticon) is incidental to that product and is not being separately procured.*
+
+| System / Model | Sensor Count & Type | Sampling Rate | Wireless / Telemetry | Approx. Cost (India, ₹) | Suitability for General Population |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **DIY Velostat / FSR Insole** | 8–16 FSR piezoresistive points | 100 Hz | ESP32-S3 BLE 5.0 | **$\$35 - \$70$** | **Ideal for accessible/capstone deployment**; fits inside any sneaker. |
-| **Arion Smart Running Insoles** | 8 thin-film pressure pods + footpod IMU | 100 Hz | BLE to smartphone app | **$\$200 - \$350$** | Commercially available consumer fitness product. |
-| **Loadsol (Novel.de)** | 1-to-3 zone capacitive insole | 100–200 Hz | Wireless BLE / Internal flash | **$\$2,000 - \$3,500$** | Research / collegiate sports science labs. |
-| **Moticon OpenGo** | 16 capacitive sensors + integrated 6-DOF IMU | Up to 400 Hz | Synchronous BLE / zero-latency buffer | **$\$6,000 - \$9,000$** | Clinical research benchmark. |
+| **DIY Velostat / FSR Insole** | 8–16 FSR piezoresistive points | 100 Hz | BLE 5.0 (edge MCU, non-IMU) | **≈₹3,200 – ₹6,500** (indicative; based on ₹409/cell FSR unit price, [robu.in](https://robu.in/product/force-sensor-resistor-square-38-1mm-pressure-sensor/), verified live 2026-09-27) | **Ideal for accessible/student deployment**; fits inside any sneaker. |
+| **Arion Smart Running Insoles** | 8 thin-film pressure pods (+ bundled footpod IMU, not separately procured) | 100 Hz | BLE to smartphone app | ≈₹18,000 – ₹31,500 (indicative conversion, India vendor not verified) | Commercially available consumer fitness product. |
+| **Loadsol (Novel.de)** | 1-to-3 zone capacitive insole | 100–200 Hz | Wireless BLE / Internal flash | ≈₹1,80,000 – ₹3,15,000 (indicative conversion, India vendor not verified) | Research / collegiate sports science labs. |
+| **Moticon OpenGo** | 16 capacitive sensors (+ bundled integrated 6-DOF IMU, not separately procured) | Up to 400 Hz | Synchronous BLE / zero-latency buffer | ≈₹5,40,000 – ₹8,10,000 (indicative conversion, India vendor not verified) | Clinical research benchmark. |
 
 ---
 
